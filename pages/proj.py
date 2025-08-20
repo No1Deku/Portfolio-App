@@ -55,13 +55,14 @@ def display_project():
         "<h1 style='text-align: center; width: 100%;'>Project: Cafe Sales Data Cleaning & Exploration</h1>",
         unsafe_allow_html=True
     )
-    
-    st.image(r"background/Issue Log.png", use_container_width=True)
+    with st.expander("View PDF Pages"):     
+        st.image(r"background/Issue Log.png", use_container_width=True)
 
     pdf_path = r"Dirty_Cafe_Sales_Project_Description.pdf"
     doc = fitz.open(pdf_path)
 
     st.markdown("<h2 style='text-align: center;'>Project Description PDF</h2>", unsafe_allow_html=True)
+
 
     with st.expander("View PDF Pages"):  
         for page_number in range(len(doc)):
@@ -82,3 +83,4 @@ def display_project():
 # Call the function
 
 display_project()
+
