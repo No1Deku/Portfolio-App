@@ -16,7 +16,7 @@ def get_img_as_base64(file_path):
     return None
 
 
-background_path = r"C:\Users\Admin\Downloads\background\s.jpg"
+background_path = r"background/8.jpg"
 backgr = get_img_as_base64(background_path)
 
 
@@ -117,4 +117,5 @@ st.markdown("""
 - **Cloud Platforms:** AWS, GCP  
 - **Data Visualization:** Tableau, Power BI  
 </div>
+
 """, unsafe_allow_html=True)
