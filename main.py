@@ -8,18 +8,15 @@ st.set_page_config(page_title="Main Page", layout="wide")
 
 # ------------------ BACKGROUND IMAGE ------------------
 @st.cache_data
-def get_img_as_base64(file_path):
+def get_img_as_base64(file_path: str) -> str | None:
     """Cache the image as base64 to avoid repeated encoding."""
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             return base64.b64encode(f.read()).decode()
     return None
 
-
 background_path = r"background/8.jpg"
 backgr = get_img_as_base64(background_path)
-
-
 
 if backgr:
     st.markdown(f"""
@@ -32,19 +29,28 @@ if backgr:
     }}
     [data-testid="stSidebar"] {{ display: none; }}
 
-    /* Fade-in animation */
     .fade-in {{
-        animation: fadeIn 0.6s ease-in-out;
+        animation: fadeIn 1s ease-in-out;
+        font-size: 20px;
+        line-height: 1.6;
     }}
+
+    .menu-container {{
+        text-align: center;
+        margin-top: -400px;
+        margin-left: auto;
+        margin-right: auto;
+    }}
+
     @keyframes fadeIn {{
-        from {{ opacity: 0; transform: translateY(10px); }}
+        from {{ opacity: 0; transform: translateY(15px); }}
         to {{ opacity: 1; transform: translateY(0); }}
     }}
     </style>
     """, unsafe_allow_html=True)
 
 # ------------------ MENU ------------------
-st.markdown("""<div class="menu-container">""", unsafe_allow_html=True)
+st.markdown('<div class="menu-container">', unsafe_allow_html=True)
 
 selected = option_menu(
     menu_title="Main Menu",
@@ -54,53 +60,26 @@ selected = option_menu(
     default_index=0
 )
 
-st.markdown("</div>", unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
-st.markdown("""
-<style>
-.menu-container {
-    text-align: center;
-    margin-top: -400px;  /* Moves menu upwards by 60px */
-    margin-left: auto;
-    margin-right: auto;
-}
-</style>
-""", unsafe_allow_html=True)
-
-def switch_page():
-    if selected == "Projects":
+# ------------------ PAGE SWITCH ------------------
+def switch_page(selection: str):
+    if selection == "Projects":
         st.switch_page("pages/proj.py")
-    elif selected == "Contact":
+    elif selection == "Contact":
         st.switch_page("pages/contact.py")
 
-switch_page()
+switch_page(selected)
 
-
-st.markdown("""
-        <style>
-        .fade-in {
-            animation: fadeIn 1s ease-in-out;
-            font-size: 20px;       /* Increase font size */
-            line-height: 1.6;      /* Improve readability */
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
-st.markdown("""
-        <div class="fade-in">
-            <h1>Welcome to My Portfolio</h1>
-            <h2>I'm Ntando Nkuna</h2>
-            <h3>Data Engineering & Analytics Specialist</h3>
-        </div>
-    """, unsafe_allow_html=True)
-
+# ------------------ INTRO TEXT ------------------
 st.markdown("""
 <div class="fade-in">
+    <h1>Welcome to My Portfolio</h1>
+    <h2>I'm Ntando Nkuna</h2>
+    <h3>Data Engineering & Analytics Specialist</h3>
+</div>
 
+<div class="fade-in">
 ## Skills I Offer:
 
 - **Extract & Integrate Data:** Collect data from multiple sources, ensuring all information is available for analysis.  
@@ -117,5 +96,4 @@ st.markdown("""
 - **Cloud Platforms:** AWS, GCP  
 - **Data Visualization:** Tableau, Power BI  
 </div>
-
 """, unsafe_allow_html=True)
