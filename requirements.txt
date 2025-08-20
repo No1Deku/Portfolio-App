@@ -1,4 +1,8 @@
 streamlit
 streamlit-option-menu
 pillow
+base64
 PyMuPDF
+io
+fitz
+time
