@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
-import time
 
 st.set_page_config(page_title="Contact Page", layout="wide")
 
@@ -66,3 +65,4 @@ st.markdown(
     unsafe_allow_html=True
 
 )
+
