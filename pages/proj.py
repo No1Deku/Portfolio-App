@@ -12,7 +12,7 @@ def get_img_as_base64(file):
     with open(file, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-backgr = get_img_as_base64(r"C:\Users\Admin\Downloads\background\pro.jpg")
+backgr = get_img_as_base64(r"background/7.png")
 
 page_back = f"""
 <style>
@@ -56,9 +56,9 @@ def display_project():
         unsafe_allow_html=True
     )
     
-    st.image(r"C:\Users\Admin\Downloads\background\Issue Log.png", use_container_width=True)
+    st.image(r"background/Issue Log.png", use_container_width=True)
 
-    pdf_path = r"C:\Users\Admin\Downloads\Dirty_Cafe_Sales_Project_Description.pdf"
+    pdf_path = r"Dirty_Cafe_Sales_Project_Description.pdf"
     doc = fitz.open(pdf_path)
 
     st.markdown("<h2 style='text-align: center;'>Project Description PDF</h2>", unsafe_allow_html=True)
@@ -71,7 +71,7 @@ def display_project():
             st.image(img, use_container_width=True)
 
 
-    with open(r"C:\Users\Admin\Downloads\cafe_Eda.ipynb", "rb") as f:
+    with open(r"cafe_Eda.ipynb", "rb") as f:
         st.download_button(
             label="Download Project Notebook Here",
             data=f,
@@ -80,4 +80,5 @@ def display_project():
         )
 
 # Call the function
+
 display_project()
