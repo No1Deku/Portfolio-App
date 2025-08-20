@@ -5,15 +5,13 @@ import time
 
 st.set_page_config(page_title="Contact Page", layout="wide")
 
-# ------------- BACKGROUND -------------
 def get_img_as_base64(file):
     with open(file, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-backgr = get_img_as_base64(r"C:\Users\Admin\Downloads\background\4.jpeg")
+backgr = get_img_as_base64(r"background/6.jpeg")
 
 
-video_file = r"C:\Users\Admin\Downloads\v.mp4"
 page_back = f"""
 <style>
 [data-testid="stAppViewContainer"] {{
@@ -35,7 +33,6 @@ page_back = f"""
 """
 st.markdown(page_back, unsafe_allow_html=True)
 
-# ------------- MENU -------------
 selected = option_menu(
     menu_title="Main Menu",
     options=["Main", "Projects", "Contact"],
@@ -44,7 +41,6 @@ selected = option_menu(
     default_index=2
 )
 
-# ------------- PAGE SWITCH WITH LOADING BAR -------------
 if selected == "Main":
 
     st.switch_page("main.py")
@@ -53,7 +49,6 @@ elif selected == "Projects":
 
     st.switch_page("pages/proj.py")
 
-# ------------- PAGE CONTENT -------------
 st.markdown(
     """
     <div class="fade-in" style="text-align: center; margin-top: 150px;">
@@ -69,4 +64,5 @@ st.markdown(
     </div>
     """,
     unsafe_allow_html=True
+
 )
