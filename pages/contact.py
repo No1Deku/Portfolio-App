@@ -9,6 +9,7 @@ st.set_page_config(page_title="Contact Page", layout="wide")
 # ------------------ BACKGROUND IMAGE ------------------
 @st.cache_data
 def get_img_as_base64(file_path: str) -> str | None:
+    """Return base64 string of an image if it exists."""
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             return base64.b64encode(f.read()).decode()
