@@ -49,15 +49,6 @@ if backgr:
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Interview Recording")
-
-st.write("Thank you for reviewing my interview video. Please watch below:")
-
-video_file = open("interview.mp4", "rb")
-video_bytes = video_file.read()
-
-st.video(video_bytes)
-
 st.markdown('<div class="menu-container">', unsafe_allow_html=True)
 
 selected = option_menu(
@@ -103,4 +94,5 @@ st.markdown("""
 - **Data Visualization:** Tableau, Power BI  
 </div>
 """, unsafe_allow_html=True)
+
 
