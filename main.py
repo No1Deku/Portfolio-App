@@ -3,10 +3,10 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-# ------------------ PAGE CONFIG ------------------
+
 st.set_page_config(page_title="Main Page", layout="wide")
 
-# ------------------ BACKGROUND IMAGE ------------------
+
 @st.cache_data
 def get_img_as_base64(file_path: str) -> str | None:
     """Cache the image as base64 to avoid repeated encoding."""
@@ -49,7 +49,15 @@ if backgr:
     </style>
     """, unsafe_allow_html=True)
 
-# ------------------ MENU ------------------
+st.title("Interview Recording")
+
+st.write("Thank you for reviewing my interview video. Please watch below:")
+
+video_file = open("interview.mp4", "rb")
+video_bytes = video_file.read()
+
+st.video(video_bytes)
+
 st.markdown('<div class="menu-container">', unsafe_allow_html=True)
 
 selected = option_menu(
@@ -62,7 +70,6 @@ selected = option_menu(
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ------------------ PAGE SWITCH ------------------
 def switch_page(selection: str):
     if selection == "Projects":
         st.switch_page("pages/proj.py")
@@ -71,7 +78,6 @@ def switch_page(selection: str):
 
 switch_page(selected)
 
-# ------------------ INTRO TEXT ------------------
 st.markdown("""
 <div class="fade-in">
     <h1>Welcome to My Portfolio</h1>
@@ -97,3 +103,4 @@ st.markdown("""
 - **Data Visualization:** Tableau, Power BI  
 </div>
 """, unsafe_allow_html=True)
+
