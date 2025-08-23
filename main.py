@@ -9,7 +9,6 @@ st.set_page_config(page_title="Main Page", layout="wide")
 
 @st.cache_data
 def get_img_as_base64(file_path: str) -> str | None:
-    """Cache the image as base64 to avoid repeated encoding."""
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             return base64.b64encode(f.read()).decode()
@@ -94,5 +93,6 @@ st.markdown("""
 - **Data Visualization:** Tableau, Power BI  
 </div>
 """, unsafe_allow_html=True)
+
 
 
