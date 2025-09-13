@@ -14,7 +14,7 @@ def get_img_as_base64(file_path: str) -> str | None:
             return base64.b64encode(f.read()).decode()
     return None
 
-background_path = r"background/8.jpg"
+background_path = r"background/jr-korpa-9XngoIpxcEo-unsplash.jpg"
 backgr = get_img_as_base64(background_path)
 
 if backgr:
@@ -93,6 +93,7 @@ st.markdown("""
 - **Data Visualization:** Tableau, Power BI  
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
